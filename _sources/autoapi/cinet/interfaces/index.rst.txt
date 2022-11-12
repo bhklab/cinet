@@ -1,0 +1,177 @@
+:py:mod:`cinet.interfaces`
+==========================
+
+.. py:module:: cinet.interfaces
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   cinet.interfaces.BaseCINET
+   cinet.interfaces.deepCINET
+   cinet.interfaces.ECINET
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   cinet.interfaces.abstractattr
+
+
+
+.. py:function:: abstractattr(f)
+
+
+.. py:class:: BaseCINET(*, modelPath='', batch_size=256, num_workers=8, folds=5, use_folds=False, momentum=5.0, weight_decay=5.0, sc_milestones=[1, 2, 5, 15, 30], sc_gamma=0.35, delta=0.0, dropout=0.4, learning_rate=0.01, device='cpu', seed=420)
+
+   Bases: :py:obj:`sklearn.base.BaseEstimator`
+
+   .. py:method:: _validate_params()
+
+      Validate all parameters initialized in the model.
+      This function is a private function called every time that .fit() is called.
+
+
+   .. py:method:: fit(X=None, y=None)
+
+      Train the model based on training input data
+
+      :param X: Input training data.
+      :type X: pandas.dataframe
+      :param y: Output data to be predicted.
+      :type y: pandas.dataframe
+
+
+   .. py:method:: predict(X)
+
+      Predict a ranked list from input data
+
+      :param X: Input test data.
+      :type X: pandas.dataframe
+
+      :returns: Returns a pytorch tensor of the predicted values
+      :rtype: torch.Tensor
+
+
+   .. py:method:: score(X=None, y=None)
+
+
+   .. py:method:: add_argument_group(name)
+
+
+   .. py:method:: getPytorchModel()
+
+
+   .. py:method:: getConfig()
+      :abstractmethod:
+
+      return a configuration object for the neural network
+
+      The config object must contain the following parameters:
+
+      nnHiddenLayers : tuple
+          A tuple of integers to configure the layers in the neural net
+      batchnorm : bool
+          A boolean to determine if batch normalization should be applied
+
+
+   .. py:method:: get_model(config)
+
+      return the siamese model (PyTorch model)
+
+      :param config: A dictionary containing configuration variables relevant to the model.
+      :type config: dict
+
+      :rtype: A PyTorch model for the network.
+
+
+   .. py:method:: get_trainer(hyperparams)
+
+      Returns a PyTorch Lightning Trainer Object
+
+      :param hyperparams: A hyperparameter object with relevant values for trainer initialization.
+      :type hyperparams: dict
+
+      :rtype: A PyTorch Lightning Trainer Object
+
+
+   .. py:method:: get_dataloaders(dataSet)
+
+      Returns a tuple containing the training and then the testing PyTorch DataLoaders.
+
+      :param dataSet: Takes in a Pandas DataFrame object.
+      :type dataSet: pandas.DataFrame
+
+      :returns: * *A tuple with two objects. The first one is the training dataloader (PyTorch.DataLoader), the*
+                * *second is the testing dataloader.*
+
+
+
+.. py:class:: deepCINET(nnHiddenLayers=(128, 512, 128, 0), **kwargs)
+
+   Bases: :py:obj:`BaseCINET`
+
+   .. py:method:: _validate_params()
+
+      Validate all parameters initialized in the model.
+      This function is a private function called every time that .fit() is called.
+
+
+   .. py:method:: getConfig()
+
+      return a configuration object for the neural network
+
+      The config object must contain the following parameters:
+
+      nnHiddenLayers : tuple
+          A tuple of integers to configure the layers in the neural net
+      batchnorm : bool
+          A boolean to determine if batch normalization should be applied
+
+
+   .. py:method:: get_model(config)
+
+      return the siamese model (PyTorch model)
+
+      :param config: A dictionary containing configuration variables relevant to the model.
+      :type config: dict
+
+      :rtype: A PyTorch model for the network.
+
+
+
+.. py:class:: ECINET(*, modelPath='', batch_size=256, num_workers=8, folds=5, use_folds=False, momentum=5.0, weight_decay=5.0, sc_milestones=[1, 2, 5, 15, 30], sc_gamma=0.35, delta=0.0, dropout=0.4, learning_rate=0.01, device='cpu', seed=420)
+
+   Bases: :py:obj:`BaseCINET`
+
+   .. py:method:: getConfig()
+
+      return a configuration object for the neural network
+
+      The config object must contain the following parameters:
+
+      nnHiddenLayers : tuple
+          A tuple of integers to configure the layers in the neural net
+      batchnorm : bool
+          A boolean to determine if batch normalization should be applied
+
+
+   .. py:method:: get_model(config)
+
+      return the siamese model (PyTorch model)
+
+      :param config: A dictionary containing configuration variables relevant to the model.
+      :type config: dict
+
+      :rtype: A PyTorch model for the network.
+
+
+

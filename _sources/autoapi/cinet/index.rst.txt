@@ -1,0 +1,104 @@
+:py:mod:`cinet`
+===============
+
+.. py:module:: cinet
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   interfaces/index.rst
+   models/index.rst
+   utils/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   cinet.deepCINET
+   cinet.ECINET
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   cinet.__version__
+
+
+.. py:data:: __version__
+   
+
+   
+
+.. py:class:: deepCINET(nnHiddenLayers=(128, 512, 128, 0), **kwargs)
+
+   Bases: :py:obj:`BaseCINET`
+
+   .. py:method:: _validate_params()
+
+      Validate all parameters initialized in the model.
+      This function is a private function called every time that .fit() is called.
+
+
+   .. py:method:: getConfig()
+
+      return a configuration object for the neural network
+
+      The config object must contain the following parameters:
+
+      nnHiddenLayers : tuple
+          A tuple of integers to configure the layers in the neural net
+      batchnorm : bool
+          A boolean to determine if batch normalization should be applied
+
+
+   .. py:method:: get_model(config)
+
+      return the siamese model (PyTorch model)
+
+      :param config: A dictionary containing configuration variables relevant to the model.
+      :type config: dict
+
+      :rtype: A PyTorch model for the network.
+
+
+
+.. py:class:: ECINET(*, modelPath='', batch_size=256, num_workers=8, folds=5, use_folds=False, momentum=5.0, weight_decay=5.0, sc_milestones=[1, 2, 5, 15, 30], sc_gamma=0.35, delta=0.0, dropout=0.4, learning_rate=0.01, device='cpu', seed=420)
+
+   Bases: :py:obj:`BaseCINET`
+
+   .. py:method:: getConfig()
+
+      return a configuration object for the neural network
+
+      The config object must contain the following parameters:
+
+      nnHiddenLayers : tuple
+          A tuple of integers to configure the layers in the neural net
+      batchnorm : bool
+          A boolean to determine if batch normalization should be applied
+
+
+   .. py:method:: get_model(config)
+
+      return the siamese model (PyTorch model)
+
+      :param config: A dictionary containing configuration variables relevant to the model.
+      :type config: dict
+
+      :rtype: A PyTorch model for the network.
+
+
+

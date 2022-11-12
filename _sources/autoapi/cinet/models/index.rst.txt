@@ -1,0 +1,131 @@
+:py:mod:`cinet.models`
+======================
+
+.. py:module:: cinet.models
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   cinet.models.FullyConnected
+   cinet.models.FullyConnectedLinear
+   cinet.models.Dataset
+   cinet.models.DeepCINET
+
+
+
+
+.. py:class:: FullyConnected(layers_size, dropout, batchnorm)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+   Fully connected network architecture for CINET models. This corresponds
+   to the DeepCINET method.
+
+   .. py:method:: forward(x)
+
+
+
+.. py:class:: FullyConnectedLinear(layers_size, dropout, batchnorm)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+   .. py:method:: forward(x)
+
+      Forward pass
+
+
+
+.. py:class:: Dataset(dataframe, is_train, batch_size, delta=0, idxs=None)
+
+   Bases: :py:obj:`torch.utils.data.Dataset`
+
+   Data set class which returns a pytorch data set object
+   Returns a iterable data set object extending from the pytorch dataset
+   object.
+
+   .. py:method:: __len__()
+
+
+   .. py:method:: gene_num()
+
+
+   .. py:method:: __getitem__(index)
+
+
+   .. py:method:: train_item(pair_idx)
+
+
+   .. py:method:: test_item(idx)
+
+
+   .. py:method:: _load_item(idx)
+
+      Function to load the features of a cell line
+      :param idx: the cell line index in our input csv
+      :return: returns a gene expression variable
+
+
+   .. py:method:: _load_response(idx)
+
+
+   .. py:method:: _build_pairs(delta)
+
+      build pairs of indices and labels for training data
+
+
+
+   .. py:method:: get_concordant_pair_list(delta)
+
+
+   .. py:method:: get_relationship_from_index(i, j)
+
+      check if drug reponse at index i is greater than drug response at index j
+
+
+
+.. py:class:: DeepCINET(hyperparams, config, data_dir=None, linear=False)
+
+   Bases: :py:obj:`pytorch_lightning.LightningModule`
+
+   Base class for our DeepCINET implemented in pytorch lightning
+   Provides methods to train and validate as well as configuring the optimizer
+   scheduler.
+
+   .. py:method:: forward(geneA, geneB)
+
+
+   .. py:method:: training_step(batch, batch_idx)
+
+
+   .. py:method:: training_epoch_end(outputs)
+
+
+   .. py:method:: validation_step(batch, batch_idx)
+
+
+   .. py:method:: validation_epoch_end(outputs)
+
+
+   .. py:method:: test_step(batch, batch_idx)
+
+
+   .. py:method:: test_epoch_end(outputs)
+
+
+   .. py:method:: configure_optimizers()
+
+
+   .. py:method:: log_model_parameters()
+
+
+   .. py:method:: count_parameters(model)
+      :staticmethod:
+
+
+

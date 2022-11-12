@@ -1,0 +1,39 @@
+:py:mod:`02_results_after_tuning`
+=================================
+
+.. py:module:: 02_results_after_tuning
+
+
+Module Contents
+---------------
+
+.. py:data:: train_dir
+   :annotation: = /home/gputwo/bhklab/kevint/cinet/train_data/
+
+   
+
+.. py:data:: test_directories
+   
+
+   
+
+.. py:data:: deepCINET_hparam_tuned
+   
+
+   
+
+.. py:data:: ECINET_hparam_tuned
+   
+
+   
+
+.. py:data:: data
+   
+
+   
+
+.. py:data:: drug
+   
+
+   
+

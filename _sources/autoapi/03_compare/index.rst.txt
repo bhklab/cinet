@@ -1,0 +1,89 @@
+:py:mod:`03_compare`
+====================
+
+.. py:module:: 03_compare
+
+
+Module Contents
+---------------
+
+.. py:data:: file_dir
+   :annotation: = /home/gputwo/bhklab/kevint/cinet/train_data/
+
+   
+
+.. py:data:: file_list
+   
+
+   
+
+.. py:data:: file
+   
+
+   
+
+.. py:data:: modelDC
+   
+
+   
+
+.. py:data:: modelEC
+   
+
+   
+
+.. py:data:: modelLN
+   
+
+   
+
+.. py:data:: modelEN
+   
+
+   
+
+.. py:data:: train_df
+   
+
+   
+
+.. py:data:: X
+   
+
+   
+
+.. py:data:: X
+   
+
+   
+
+.. py:data:: y
+   
+
+   
+
+.. py:data:: test_file
+   :annotation: = /home/gputwo/bhklab/kevint/cinet/test_data/GDSC_Test_Data/gene_GDSC_rnaseq_Erlotinib_response.csv
+
+   
+
+.. py:data:: test_df
+   
+
+   
+
+.. py:data:: test_df_X
+   
+
+   
+
+.. py:data:: test_df_X
+   
+
+   
+
+.. py:data:: test_df_Y
+   
+
+   
+
